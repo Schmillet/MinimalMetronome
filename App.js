@@ -1,9 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Pressable} from 'react-native';
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Pressable } from "react-native";
+import React from "react";
 
-
-const App = () =>{
+const App = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
@@ -14,28 +12,26 @@ const App = () =>{
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'start',
+    alignItems: "center",
+    justifyContent: "start",
   },
-  wrapper:{
-    backgroundColor: '#7fffd4',
-    flex:1
+  wrapper: {
+    backgroundColor: "#7fffd4",
+    flex: 1,
   },
-  titleStyle:{
-    color: 'black',
-    fontSize: 30
+  titleStyle: {
+    color: "black",
+    fontSize: 30,
   },
-  pressText:{
+  pressText: {
     fontSize: 20,
   },
-  bodyWrap:{
-    
-  }
+  bodyWrap: {},
 });
 
-export default App
+export default App;
