@@ -1,6 +1,6 @@
 import {View, StyleSheet} from 'react-native'
 import React from 'react'
-import MainScreen from './components/mainScreen'
+import MainScreen from './src/components/mainScreen'
 
 const App = () => {
 	const {container} = styles
