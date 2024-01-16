@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, SafeAreaView, Text, StyleSheet, Pressable} from 'react-native'
-import AdjustButton from './adjustButton'
-import OptionButton from './optionButton'
+import AdjustButton from '../buttons/adjustButton'
+import OptionButton from '../buttons/optionButton'
 import {Feather} from '@expo/vector-icons'
 
 const MainScreen = () => {
