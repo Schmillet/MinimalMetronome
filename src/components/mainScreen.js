@@ -3,10 +3,12 @@ import {View, SafeAreaView, Text, StyleSheet, Pressable} from 'react-native'
 import AdjustButton from './buttons/adjustButton'
 import OptionButton from './buttons/optionButton'
 import {Feather} from '@expo/vector-icons'
+import {Audio} from 'expo-av'
 
 const MainScreen = () => {
 	const [tempo, setTempo] = useState(75)
 	const [isOn, setIsOn] = useState(false)
+	const [sound, setSound] = useState();
 
 	useEffect(() => {
 		console.log(tempo)
