@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, SafeAreaView, Text, StyleSheet, Pressable} from 'react-native'
-import AdjustButton from '../buttons/adjustButton'
-import OptionButton from '../buttons/optionButton'
+import AdjustButton from './buttons/adjustButton'
+import OptionButton from './buttons/optionButton'
 import {Feather} from '@expo/vector-icons'
 
 const MainScreen = () => {
@@ -24,13 +24,26 @@ const MainScreen = () => {
 		playButton,
 		optionsWrapper
 	} = styles
+
+	const minusTempo = () =>{
+		if(tempo >0){
+			setTempo(tempo - 1)
+		}
+	}
+
+	const plusTempo = () =>{
+		if(tempo < 500){
+			setTempo(tempo + 1)
+		}
+	}
+
 	return (
 		<SafeAreaView style={container}>
 			<View style={wrapper}>
 				<Text style={titleStyle}>Metronome</Text>
 				<View style={tempoWrapper}>
 					<AdjustButton
-						onPress={() => setTempo(tempo - 1)}
+						onPress={minusTempo}
 						imgName={'minus-circle'}
 						imgSize={50}
 					/>
@@ -38,7 +51,7 @@ const MainScreen = () => {
 						<Text style={tempoText}>{tempo}</Text>
 					</View>
 					<AdjustButton
-						onPress={() => setTempo(tempo + 1)}
+						onPress={plusTempo}
 						imgName={'plus-circle'}
 						imgSize={50}
 					/>
