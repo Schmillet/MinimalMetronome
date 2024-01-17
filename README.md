@@ -12,4 +12,5 @@ I built this app with IOS and the Expo Go app in mind, since I don't own a syste
 
 # How to Build
 - Node.js is required to build this app: [Download Link](https://nodejs.org/en/download/current)
+- Expo Audio is required: `npx expo install expo-av`
 - To run app using Expo Go, enter `npx expo start` in the terminal
