@@ -8,7 +8,7 @@ import {Audio} from 'expo-av'
 const MainScreen = () => {
 	const [tempo, setTempo] = useState(75)
 	const [isOn, setIsOn] = useState(false)
-	const [sound, setSound] = useState();
+	const [sound, setSound] = useState()
 
 	useEffect(() => {
 		console.log(tempo)
@@ -27,14 +27,14 @@ const MainScreen = () => {
 		optionsWrapper
 	} = styles
 
-	const minusTempo = () =>{
-		if(tempo >0){
+	const minusTempo = () => {
+		if (tempo > 0) {
 			setTempo(tempo - 1)
 		}
 	}
 
-	const plusTempo = () =>{
-		if(tempo < 500){
+	const plusTempo = () => {
+		if (tempo < 500) {
 			setTempo(tempo + 1)
 		}
 	}
@@ -65,9 +65,17 @@ const MainScreen = () => {
 							isOn ? setIsOn(false) : setIsOn(true)
 						}}>
 						{isOn ? (
-							<Feather name="pause-circle" size={60} color={'#D8FFDB'}/>
+							<Feather
+								name="pause-circle"
+								size={60}
+								color={'#D8FFDB'}
+							/>
 						) : (
-							<Feather name="play-circle" size={60} color={'#D8FFDB'}/>
+							<Feather
+								name="play-circle"
+								size={60}
+								color={'#D8FFDB'}
+							/>
 						)}
 					</Pressable>
 				</View>
@@ -115,7 +123,7 @@ const styles = StyleSheet.create({
 	tempoText: {
 		fontSize: 60,
 		fontWeight: 'bold',
-        color: '#D8FFDB'
+		color: '#D8FFDB'
 	},
 	tempoView: {
 		borderColor: '#D8FFDB',
