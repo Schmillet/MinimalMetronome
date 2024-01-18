@@ -41,60 +41,56 @@ const MainScreen = () => {
 
 	return (
 		<SafeAreaView style={container}>
-			<View style={wrapper}>
-				<Text style={titleStyle}>Metronome</Text>
-				<View style={tempoWrapper}>
-					<AdjustButton
-						onPress={minusTempo}
-						imgName={'minus-circle'}
-						imgSize={50}
-					/>
-					<View style={tempoView}>
-						<Text style={tempoText}>{tempo}</Text>
-					</View>
-					<AdjustButton
-						onPress={plusTempo}
-						imgName={'plus-circle'}
-						imgSize={50}
-					/>
+			<Text style={titleStyle}>Metronome</Text>
+			<View style={tempoWrapper}>
+				<AdjustButton
+					onPress={minusTempo}
+					imgName={'minus-circle'}
+					imgSize={50}
+				/>
+				<View style={tempoView}>
+					<Text style={tempoText}>{tempo}</Text>
 				</View>
-				<View style={playWrapper}>
-					<Pressable
-						style={playButton}
-						onPress={() => {
-							isOn ? setIsOn(false) : setIsOn(true)
-						}}>
-						{isOn ? (
-							<Feather
-								name="pause-circle"
-								size={60}
-								color={'#D8FFDB'}
-							/>
-						) : (
-							<Feather
-								name="play-circle"
-								size={60}
-								color={'#D8FFDB'}
-							/>
-						)}
-					</Pressable>
-				</View>
-				<View style={optionsWrapper}>
-					<OptionButton
-						text={'quarter'}
-						margin={45}
-						onPress={() => console.log('pressed')}
-					/>
-					<OptionButton
-						text={'eighth'}
-						margin={45}
-						onPress={() => console.log('pressed')}
-					/>
-					<OptionButton
-						text={'sixteenth'}
-						onPress={() => console.log('pressed')}
-					/>
-				</View>
+				<AdjustButton
+					onPress={plusTempo}
+					imgName={'plus-circle'}
+					imgSize={50}
+				/>
+			</View>
+			<View style={playWrapper}>
+				<Pressable
+					style={playButton}
+					onPress={() => {
+						isOn ? setIsOn(false) : setIsOn(true)
+					}}>
+					{isOn ? (
+						<Feather
+							name="pause-circle"
+							size={60}
+							color={'#D8FFDB'}
+						/>
+					) : (
+						<Feather
+							name="play-circle"
+							size={60}
+							color={'#D8FFDB'}
+						/>
+					)}
+				</Pressable>
+			</View>
+			<View style={optionsWrapper}>
+				<OptionButton
+					text={'quarter'}
+					onPress={() => console.log('pressed')}
+				/>
+				<OptionButton
+					text={'eighth'}
+					onPress={() => console.log('pressed')}
+				/>
+				<OptionButton
+					text={'sixteenth'}
+					onPress={() => console.log('pressed')}
+				/>
 			</View>
 		</SafeAreaView>
 	)
@@ -102,10 +98,8 @@ const MainScreen = () => {
 
 const styles = StyleSheet.create({
 	container: {
+		display: 'flex',
 		backgroundColor: '#015958',
-		flex: 1
-	},
-	wrapper: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'flex-start'
@@ -118,7 +112,8 @@ const styles = StyleSheet.create({
 	tempoWrapper: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		marginTop: 25
+		alignItems: 'center',
+		flex: .3
 	},
 	tempoText: {
 		fontSize: 60,
@@ -137,16 +132,19 @@ const styles = StyleSheet.create({
 	playWrapper: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: 35
+		flex: .1,
+		marginBottom: 30
 	},
 	playButton: {
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	optionsWrapper: {
-		alignSelf: '',
 		flexDirection: 'row',
-		marginTop: 50
+		justifyContent: 'space-around',
+		flex: .5,
+		alignItems: 'center',
+		width: '100%'
 	}
 })
 
