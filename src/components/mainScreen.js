@@ -3,12 +3,14 @@ import {View, SafeAreaView, Text, StyleSheet, Pressable} from 'react-native'
 import AdjustButton from './buttons/adjustButton'
 import OptionButton from './buttons/optionButton'
 import {Feather} from '@expo/vector-icons'
-import {Audio} from 'expo-av'
+
+var adjustTimer
+var metroTimer
 
 const MainScreen = () => {
 	const [tempo, setTempo] = useState(75)
 	const [isOn, setIsOn] = useState(false)
-	const [sound, setSound] = useState()
+	//const [sound, setSound] = useState()
 
 	useEffect(() => {
 		console.log(tempo)
@@ -17,7 +19,6 @@ const MainScreen = () => {
 
 	const {
 		container,
-		wrapper,
 		tempoText,
 		titleStyle,
 		tempoView,
@@ -27,16 +28,37 @@ const MainScreen = () => {
 		optionsWrapper
 	} = styles
 
+	const minusTimer = () => {
+		minusTempo()
+		adjustTimer = setInterval(minusTempo, 500)
+	}
 	const minusTempo = () => {
 		if (tempo > 0) {
-			setTempo(tempo - 1)
+			setTempo((prev) => prev - 1)
 		}
 	}
-
+	const plusTimer = () => {
+		plusTempo()
+		adjustTimer = setInterval(plusTempo, 350)
+	}
 	const plusTempo = () => {
 		if (tempo < 500) {
-			setTempo(tempo + 1)
+			setTempo((prev) => prev + 1)
 		}
+	}
+	let timeObj = {
+		stopAdjust: function () {
+			clearInterval(adjustTimer)
+		},
+		stopMetro: function () {
+			clearInterval(metroTimer)
+		}
+	}
+	const metroStart = () => {
+		metroTimer = setInterval(metroSound, 60000 / tempo)
+	}
+	const metroSound = () =>{
+		console.log('Beep')
 	}
 
 	return (
@@ -44,24 +66,28 @@ const MainScreen = () => {
 			<Text style={titleStyle}>Metronome</Text>
 			<View style={tempoWrapper}>
 				<AdjustButton
-					onPress={minusTempo}
 					imgName={'minus-circle'}
 					imgSize={50}
+					pressIn={minusTimer}
+					pressOut={timeObj.stopAdjust}
 				/>
 				<View style={tempoView}>
 					<Text style={tempoText}>{tempo}</Text>
 				</View>
 				<AdjustButton
-					onPress={plusTempo}
 					imgName={'plus-circle'}
 					imgSize={50}
+					pressIn={plusTimer}
+					pressOut={timeObj.stopAdjust}
 				/>
 			</View>
 			<View style={playWrapper}>
 				<Pressable
 					style={playButton}
 					onPress={() => {
-						isOn ? setIsOn(false) : setIsOn(true)
+						isOn
+							? (setIsOn(false), timeObj.stopMetro())
+							: (setIsOn(true), metroStart())
 					}}>
 					{isOn ? (
 						<Feather
@@ -113,7 +139,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		flex: .3
+		flex: 0.3
 	},
 	tempoText: {
 		fontSize: 60,
@@ -132,7 +158,7 @@ const styles = StyleSheet.create({
 	playWrapper: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		flex: .1,
+		flex: 0.1,
 		marginBottom: 30
 	},
 	playButton: {
@@ -142,7 +168,7 @@ const styles = StyleSheet.create({
 	optionsWrapper: {
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		flex: .5,
+		flex: 0.5,
 		alignItems: 'center',
 		width: '100%'
 	}

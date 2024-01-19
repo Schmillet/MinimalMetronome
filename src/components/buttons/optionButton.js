@@ -1,7 +1,7 @@
 import {Text, StyleSheet, Pressable} from 'react-native'
 
 const OptionButton = (props) => {
-	const {onPress, text,} = props
+	const {onPress, text} = props
 	const {button, textStyle} = styles
 	return (
 		<Pressable style={button} onPress={onPress}>

@@ -2,10 +2,13 @@ import {Pressable, StyleSheet} from 'react-native'
 import {Feather} from '@expo/vector-icons'
 
 const AdjustButton = (props) => {
-	const {onPress, imgName, imgSize} = props
+	const {imgName, imgSize, pressIn, pressOut} = props
 	const {buttonStyle} = styles
 	return (
-		<Pressable style={buttonStyle} onPress={onPress}>
+		<Pressable
+			style={buttonStyle}
+			onPressIn={pressIn}
+			onPressOut={pressOut}>
 			<Feather name={imgName} size={imgSize} color={'#D8FFDB'} />
 		</Pressable>
 	)

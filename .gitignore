@@ -36,3 +36,9 @@ yarn-error.*
 
 #prettier
 .prettierrc.js
+
+#eslint
+.eslintrc.json
+
+#vscode
+.vscode
