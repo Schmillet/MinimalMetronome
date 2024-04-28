@@ -85,9 +85,9 @@ const MainScreen = () => {
 				<Pressable
 					style={playButton}
 					onPress={() => {
-						isOn
-							? (setIsOn(false), timeObj.stopMetro())
-							: (setIsOn(true), metroStart())
+					isOn
+						? (setIsOn(false), timeObj.stopMetro())
+						: (setIsOn(true), metroStart())
 					}}>
 					{isOn ? (
 						<Feather
